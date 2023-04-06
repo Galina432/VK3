@@ -5,6 +5,7 @@
 //  Created by Irina on 23.10.2022.
 //
 
+
 import UIKit
 
 class NewsTableViewCell2: UITableViewCell {

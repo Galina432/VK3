@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 struct FeedResponseWrapped: Codable {
     var response: FeedResponse
 }
@@ -138,5 +137,6 @@ struct UserGroup: Codable {
         case avatarURL = "photo_100"
     }
 }
+
 
 
