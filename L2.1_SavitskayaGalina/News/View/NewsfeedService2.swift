@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 import UIKit
 
-
 final class NewsfeedService {
     
     func parse(data: Data, completionHandler: @escaping (FeedResponse) -> Void) {

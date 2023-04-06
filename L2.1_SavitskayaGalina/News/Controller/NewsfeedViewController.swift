@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class NewsfeedViewController: UIViewController {
     
     var expandedcell:IndexSet = []

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class NewsTableViewCell4: UITableViewCell {
 
     @IBOutlet weak var likesLabel: UILabel!
