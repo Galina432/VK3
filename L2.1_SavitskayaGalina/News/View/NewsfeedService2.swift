@@ -5,10 +5,10 @@
 //  Created by Irina on 28.01.2023.
 //
 
+
 import Foundation
 import RealmSwift
 import UIKit
-
 
 final class NewsfeedService {
     
@@ -195,7 +195,6 @@ final class NewsfeedService {
             }
         }
     }
-    
 }
 
 
