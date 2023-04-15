@@ -38,8 +38,11 @@ import Foundation
 //        return lhs.groupName == rhs.groupName
 //    }
 //}
+
 struct Group {
     let id: Int
     let name: String
     let avatar: String
 }
+
+

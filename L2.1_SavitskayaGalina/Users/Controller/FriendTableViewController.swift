@@ -129,10 +129,12 @@ class FriendTableViewController: UITableViewController, UISearchBarDelegate {
     // настройка хедера ячеек и добавление букв в него
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView()
-        header.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3) // прозрачность только хедера
+        //header.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3) // прозрачность только хедера
+        header.backgroundColor = UIColor.brandLightGray
         
         let leter: UILabel = UILabel(frame: CGRect(x: 30, y: 5, width: 20, height: 20))
-        leter.textColor = UIColor.black.withAlphaComponent(0.5)  // прозрачность только надписи
+        //leter.textColor = UIColor.black.withAlphaComponent(0.5)  // прозрачность только надписи
+        leter.textColor = UIColor.brandBlack
         leter.text = letersOfNames[section]
         leter.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
         header.addSubview(leter)

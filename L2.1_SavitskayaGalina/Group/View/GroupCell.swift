@@ -9,19 +9,23 @@ import UIKit
 
 class GroupCell: UITableViewCell {
 
-    
     @IBOutlet weak var groupImageView: UIImageView!
     @IBOutlet weak var groupNameLabel: UILabel!
-    
     
     @IBOutlet weak var groupImageView2: UIImageView!
     @IBOutlet weak var groupNameLabel2: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    func configure(group: GroupViewModel) {
+        groupNameLabel.text = group.nameText
+        if let imgUrl = URL(string: group.avatarImageUrl) {
+            groupImageView.load(url: imgUrl)
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    func configure2(group: GroupViewModel) {
+        groupNameLabel2.text = group.nameText
+        if let imgUrl = URL(string: group.avatarImageUrl) {
+            groupImageView2.load(url: imgUrl)
+        }
     }
 }

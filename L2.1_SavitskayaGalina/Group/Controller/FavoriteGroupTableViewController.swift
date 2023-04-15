@@ -7,17 +7,23 @@
 import UIKit
 
 class FavoriteGroupTableViewController: UITableViewController {
-    
     var groups = [Group]()
+    var viewModels: [GroupViewModel] = []
+    var unchangedViewModels: [GroupViewModel] = []
+
     private let groupService = GroupsAdapter()
+    private let viewModelFactory = GroupViewModelFactory()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         groupService.getGroups { [weak self] groups in
-            self?.groups = groups
+            guard let self else { return }
+            self.groups = groups
+            self.viewModels = self.viewModelFactory.constructViewModels(from: groups)
+            self.unchangedViewModels = self.viewModels
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }
@@ -28,17 +34,20 @@ class FavoriteGroupTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        //return groups.count
+        return viewModels.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as? GroupCell else { return UITableViewCell() }
         
-        cell.groupNameLabel.text = groups[indexPath.row].name
-        
-        if let imgUrl = URL(string: groups[indexPath.row].avatar) {
-                cell.groupImageView.load(url: imgUrl)
-            }
+        cell.configure(group: viewModels[indexPath.row])
         return cell
+        
+//        cell.groupNameLabel.text = groups[indexPath.row].name
+//
+//        if let imgUrl = URL(string: groups[indexPath.row].avatar) {
+//                cell.groupImageView.load(url: imgUrl)
+//            }
     }
 }
